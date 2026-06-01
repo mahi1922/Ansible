@@ -2,13 +2,13 @@
   hosts: frontend
   become: yes
   tasks: 
-   - name: install mysql
-     ansible.builtin.package:
+  - name: install mysql
+    ansible.builtin.package:
      name: mysql
      state: present
 
-   - name: start mysql
-     services:
+  - name: start mysql
+    service:
      - name: mysql
        state: started
        enabled: yes
