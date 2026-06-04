@@ -11,7 +11,7 @@
       image_id: ami-0220d79f3f480ecf5
       security_groups:
       - "roboshop-{{ item }}"
-      - roboshop-ui
+      - Roboshop-UI
      loop: "{{ instance }}"
      register: ec2_output
 
