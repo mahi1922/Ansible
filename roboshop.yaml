@@ -1,4 +1,4 @@
-- name: Install Roboshop instance
+- name:  Roboshop instance
   hosts: local
   connection: local
   vars: 
