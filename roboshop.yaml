@@ -15,19 +15,19 @@
        - "Roboshop-{{ item }}"
      loop: "{{ instance }}"
      register: ec2_output
-     ignor_error: true
 
-   - name: printing output
+  #  - name: printing output
      debug:
       msg: "{{ec2_output}}"
-  - name: Delete roboshop nodes
+   - name: Delete roboshop nodes
      amazon.aws.ec2_instance: 
       state: absent
       name: "Roboshop-{{ item }}"
       wait: false
      loop:  "{{ instance }}"
      register: ec2_output
-       
+  
+-
      
 
     
