@@ -1,23 +1,23 @@
 - name: roboshop instances management
   hosts: local
   connection: local
-  vars: 
-   instance: ["mongodb"]
+  vars:
+    instances: ["mongodb", "redis", "mysql", "rabbitmq", "catalogue", "user", "cart", "shipping", "payment", "frontend"]
+    image_id: ami-0220d79f3f480ecf5
+    domain_name: daws90s.shop # replace with your domain
+    action: create
   tasks:
-   - name: create an ec2 instance
-     amazon.aws.ec2_instance:
-      - name: "[roboshop-{{ item }}]"
-        instance_type: t3.micro
-        image_id: ami-0220d79f3f480ecf5
-        security_groups:
-        - "roboshop-{{ item }}"
-        - roboshop-ui
-        loop: "{{ instance }}"
-        register: ec2_output
-
-- name: print ec2_output
-  debug:
-   msg: "{{ec2_output}}"
+  - name: create ec2 instances
+    amazon.aws.ec2_instance:
+      instance_type: t3.micro
+      name: "roboshop-{{ item }}"
+      image_id: "{{ image_id }}"
+      security_groups:
+      - "roboshop-{{ item }}"
+      - roboshop-common
+    loop: "{{ instances }}"
+    register: ec2_output
+    when: action == "create"
  
  
     
