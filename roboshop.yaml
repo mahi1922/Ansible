@@ -5,7 +5,7 @@
    instance: ["Mongodb", "Redis", "MySql", "RabbitMQ", "Catalogue", "User", "Cart", "Shipping", "Payments", "Frontend"]
    image_id: ami-0220d79f3f480ecf5
   tasks:
-#   - name: Create Roboshop nodes
+  #  - name: Create Roboshop nodes
      amazon.aws.ec2_instance: 
       name: "Roboshop-{{ item }}"
       instance_type: t3.micro
@@ -15,7 +15,7 @@
        - "Roboshop-{{ item }}"
      loop: "{{ instance }}"
      register: ec2_output
-     ignore_error: true
+     ignor_error: true
 
    - name: printing output
      debug:
