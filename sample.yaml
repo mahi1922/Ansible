@@ -14,7 +14,10 @@
       - roboshop-ui
      loop: "{{ instance }}"
      register: ec2_output
-     
+
+   - name:
+      debug:
+       msg: "{{ ec2_output }}"     
  
  
     
