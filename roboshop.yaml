@@ -6,13 +6,13 @@
   tasks:
    - name: create dbnodes
      amazon.aws.ec2_instance:
-     instance_type: t3.micro
-     image_id: ami-0220d79f3f480ecf5
-     security_groups:
+      instance_type: t3.micro
+      image_id: ami-0220d79f3f480ecf5
+      security_groups:
       - "Roboshop-UI"
-     instance_name: "roboshop-{{ item }}"
-     loop: "{{ instance }}"
-     register: ec2_output
+      instance_name: "roboshop-{{ item }}"
+      loop: "{{ instance }}"
+      register: ec2_output
 
    - name: printing output
      debug:
