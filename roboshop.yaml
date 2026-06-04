@@ -1,5 +1,5 @@
 - name: install Roboshop instances
-  hosts: local
+  hosts: localhost
   connection: local
   vars: 
    instance: ["mongodb"]
