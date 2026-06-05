@@ -20,7 +20,7 @@
 
    - name: print ec2_output
      debug:
-      msg: "{{ec2_output}}"
+      msg: "{{ ec2_output }}"
     
    - name: create 53 records for Db and app nodes
      amazon.aws.route53:
