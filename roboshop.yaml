@@ -23,8 +23,8 @@
 
    - name: create 53 record
      debug:
-     msg: "Instance_PrivateIP: {{ item.instances[0].private_ip_address }}"
-  loop: "{{ ec2_output.results }}"
+       msg: "Instance_PrivateIP: {{ item.instances[0].private_ip_address }}"
+     loop: "{{ ec2_output.results }}"
 
      
 
