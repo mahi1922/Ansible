@@ -10,6 +10,7 @@
       state: stopped
       instance_name: "Roboshop-{{ item }}"
      loop: "{{ instance }}"
+     
   #  - name: Create Roboshop nodes
      amazon.aws.ec2_instance: 
       name: "Roboshop-{{ item }}"
