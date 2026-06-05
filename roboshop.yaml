@@ -5,7 +5,7 @@
    instance: ["Mongodb", "Redis", "MySql", "RabbitMQ", "Catalogue", "User", "Cart", "Shipping", "Payments", "UI"]
    image_id: ami-0220d79f3f480ecf5
   tasks:
-   - name: Create Roboshop nodes
+  #  - name: Create Roboshop nodes
      amazon.aws.ec2_instance: 
       name: "Roboshop-{{ item }}"
       instance_type: t3.micro
@@ -17,11 +17,23 @@
      loop: "{{ instance }}"
      register: ec2_output
 
-   - name: printing output
+  #  - name: printing output
      debug:
       msg: "{{ec2_output}}"
+      
+  - name: Stopping ec2 nodes
+     amazon.aws.ec2_instance:
+      state: stopped
+      instance_name: "Roboshop-{{ item }}"
+     loop: "{{ instance }}"
 
-   - name: create 53 record
+  #  - name: create 53 record
      debug:
-       msg: "PublicIP: {{ item.instances[0].public_ip_address }}"
+       msg: "Instance_PrivateIP: {{ item.instances[0].private_ip_address }}"
      loop: "{{ ec2_output.results }}"
+   
+  
+
+     
+
+    
