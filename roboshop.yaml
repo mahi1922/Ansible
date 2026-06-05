@@ -7,7 +7,7 @@
    domain_name: devopsaium.online
   tasks:
    - name: create ec2 node
-     amazon.aws.ec2.instance:
+     amazon.aws.ec2_instance:
       image_id: "{{ image_id }}"
       instance_type: t3.micro
       name: "{{ item }}"
