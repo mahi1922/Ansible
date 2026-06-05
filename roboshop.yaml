@@ -3,7 +3,7 @@
   connection: local
   vars:
    instance: [ "Mongodb", "Redis", "MySql", "RabbitMQ", "Catalogue", "User", "Cart", "Shipping", "Payments" ]
-   frontend_instance: ["UI"]
+   frontend_instance: [ "UI" ]
    image_id: ami-0220d79f3f480ecf5
    domain_name: devopsaium.online
    action: create
@@ -37,8 +37,8 @@
       overwrite: true
      loop: "{{ ec2_output.results}}"
      when:
-      - item.item == " instance"
-      - action == " create"
+      - item.item == "instance"
+      - action == "create"
   
    - name: create 53 records for frontend
      amazon.aws.route53:
