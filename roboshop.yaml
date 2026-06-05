@@ -10,26 +10,3 @@
       state: stopped
       instance_name: "Roboshop-{{ item }}"
      loop: "{{ instance }}"
-     
-  #  - name: Create Roboshop nodes
-     amazon.aws.ec2_instance: 
-      name: "Roboshop-{{ item }}"
-      instance_type: t3.micro
-      image_id: "{{ image_id }}"
-      security_groups:
-       - "Roboshop-UI"
-       - "Roboshop-{{ item }}"
-      wait: false
-     loop: "{{ instance }}"
-     register: ec2_output
-
-#  - name: printing output
-    #  debug:
-      # msg: "{{ec2_output}}"
-
-  #  - name: create 53 record
-    #  debug:
-      #  msg: "Instance_PrivateIP: {{ item.instances[0].private_ip_address }}"
-    #  loop: "{{ ec2_output.results }}"
-
-    
