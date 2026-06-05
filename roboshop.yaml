@@ -2,8 +2,7 @@
   hosts: local
   connection: local
   vars:
-   instance: [ "Mongodb", "Redis", "MySql", "RabbitMQ", "Catalogue", "User", "Cart", "Shipping", "Payments" ]
-   frontend_instance: [ "UI" ]
+   instance: [ "Mongodb", "Redis", "MySql", "RabbitMQ", "Catalogue", "User", "Cart", "Shipping", "Payments", "UI" ]
    image_id: ami-0220d79f3f480ecf5
    domain_name: devopsaium.online
    action: create
