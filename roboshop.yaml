@@ -19,9 +19,6 @@
    - name: printing output
      debug:
       msg: "{{ec2_output}}"
-  
-  
--
      
 
     
