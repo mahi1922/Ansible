@@ -44,8 +44,8 @@
       overwrite: true
      loop: "{{ ec2_output.results }}"
      when: 
-      - item.item == " UI "
-      - action == " create "
+      - item.item == "UI"
+      - action == "create"
 
 
       
