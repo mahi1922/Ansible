@@ -4,11 +4,46 @@
   vars:
    instance: ["Mongodb", "Redis", "MySql", "RabbitMQ", "Catalogue", "User", "Cart", "Shipping", "Payments", "UI"]
    image_id: ami-0220d79f3f480ecf5
+   domain_name: devopsaium.online
   tasks:
-   - name: Stopping ec2 nodes
-     amazon.aws.ec2_instance:
-      state: stopped
-      name: "Roboshop-{{ item }}"
+   - name: create ec2 node
+     amazon.aws.ec2.instance:
+      image_id: "{{ image_id }}"
+      instance_type: t3.micro
+      name: "{{ item }}"
+      security_groups:
+       - "Roboshop-UI"
+       - "Roboshop-{{ item }}"
      loop: "{{ instance }}"
+     register: ec2_output
+
+   - name: print ec2_output
+     debug:
+      msg: "{{ec2_output}}"
+    
+   - name: create 53 records for Db and app nodes
+     amazon.aws.route53:
+      state: present
+      zone: "{{ domain_name }}"
+      record: "{{instance}}.{{domain_name}}"
+      type: A
+      ttl: 1
+      value: "{{ item.instances[0].private_ip_address}}"
+      overwrite: true
+     loop: "{{ ec2_output.results}}"
+  
+   - name: create 53 records for frontend
+     amazon.aws.route53:
+      state: present
+      zone: "{{ domain_name }}"
+      record: "{{ domain_name }}"
+      type: A
+      ttl: 1
+      value: "{{ item.instance[0].public_ip_address}}"
+      overwrite: true
+     loop: "{{ ec2_output.results }}"
+
+
+      
 
  
