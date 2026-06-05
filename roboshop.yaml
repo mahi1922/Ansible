@@ -40,7 +40,7 @@
       record: "{{ domain_name }}"
       type: A
       ttl: 1
-      value: "{{ item.instance[0].public_ip_address}}"
+      value: "{{ item.instance[0].public_ip_address }}"
       overwrite: true
      loop: "{{ ec2_output.results }}"
 
