@@ -2,7 +2,8 @@
   hosts: local
   connection: local
   vars:
-   instance: [ "Mongodb", "Redis", "MySql", "RabbitMQ", "Catalogue", "User", "Cart", "Shipping", "Payments", "UI" ]
+   instance: [ "Mongodb", "Redis", "MySql", "RabbitMQ", "Catalogue", "User", "Cart", "Shipping", "Payments" ]
+   frontend_instance: ["UI"]
    image_id: ami-0220d79f3f480ecf5
    domain_name: devopsaium.online
    action: create
@@ -11,13 +12,15 @@
      amazon.aws.ec2_instance:
       image_id: "{{ image_id }}"
       instance_type: t3.micro
-      name: "{{ item }}"
+      name: "Roboshop-{{ item }}"
       security_groups:
        - "Roboshop-UI"
        - "Roboshop-{{ item }}"
       wait: false
      loop: "{{ instance }}"
      register: ec2_output
+     when:
+      - action == "create"
 
    - name: print ec2_output
      debug:
@@ -33,6 +36,9 @@
       value: "{{ item.instances[0].private_ip_address}}"
       overwrite: true
      loop: "{{ ec2_output.results}}"
+     when:
+      - item.item == " instance"
+      - action == " create"
   
    - name: create 53 records for frontend
      amazon.aws.route53:
@@ -41,11 +47,11 @@
       record: "{{ domain_name }}"
       type: A
       ttl: 1
-      value: "{{ item.instances[0].public_ip_address }}"
+      value: "{{ item.instance [0].public_ip_address }}"
       overwrite: true
      loop: "{{ ec2_output.results }}"
      when: 
-      - item.item == "UI"
+      - item.item == "frontend_instance"
       - action == "create"
 
 
