@@ -44,7 +44,7 @@
       overwrite: true
      loop: "{{ ec2_output.results }}"
      when: 
-      " item.item == frontend "
+      " item.item == UI "
 
 
       
