@@ -37,7 +37,6 @@
       overwrite: true
      loop: "{{ ec2_output.results}}"
      when:
-      - item.item == "instance"
       - action == "create"
   
    - name: create 53 records for frontend
@@ -47,11 +46,11 @@
       record: "{{ domain_name }}"
       type: A
       ttl: 1
-      value: "{{ item.instance [0].public_ip_address }}"
+      value: "{{ item.instances[0].public_ip_address }}"
       overwrite: true
      loop: "{{ ec2_output.results }}"
      when: 
-      - item.item == "frontend_instance"
+      - item.item == "UI"
       - action == "create"
 
 
