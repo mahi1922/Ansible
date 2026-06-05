@@ -14,6 +14,7 @@
       security_groups:
        - "Roboshop-UI"
        - "Roboshop-{{ item }}"
+      wait: false
      loop: "{{ instance }}"
      register: ec2_output
 
