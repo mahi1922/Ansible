@@ -5,6 +5,7 @@
    instance: [ "Mongodb", "Redis", "MySql", "RabbitMQ", "Catalogue", "User", "Cart", "Shipping", "Payments", "UI" ]
    image_id: ami-0220d79f3f480ecf5
    domain_name: devopsaium.online
+   action: create
   tasks:
    - name: create ec2 node
      amazon.aws.ec2_instance:
