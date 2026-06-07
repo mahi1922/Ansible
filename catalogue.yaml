@@ -1,0 +1,37 @@
+- name: config catalogue service
+  host: Catalogue
+  becone: yes
+  tasks:
+   - name: enable nodejs service
+     command: command: dnf module enable nodejs:20 -y
+   - name: install nodejs 20
+     package: nodejs
+     state: present
+   - name: create roboshop system user
+     user: 
+      name: roboshop
+      system: true
+      shell: /sbin/nologin
+      /home: /app
+      comment: "Roboshop System user"
+   - name: create /app folder
+     file:
+      name: /app
+      state: present
+   - name: download catalogue files
+     get_url:
+       url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
+       dest: /tmp/catalogue.zip
+   - name: unzip catalogue
+     unarchive:
+      src: /tmp/catalogue.zip
+      dest: /app
+      remote_src: yes
+   - name: install artifacts dependecy
+     community.general.npm:
+     path: /app 
+        
+     
+
+
+
