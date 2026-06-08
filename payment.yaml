@@ -1,3 +1,50 @@
 - name: Config Payments
   host: Payment
   become: yes
+  tasks:
+   - name: Install packages
+     package:
+      name: "{{ item }}"
+      state: present
+     loop:
+      - python3 
+      - gcc 
+      - python3-devel
+   - name: Create roboshop user
+     user:
+     name: roboshop
+     system: true
+     shell: /sbin/nologin
+     home: /app
+     comments: " roboshop system user "
+   - name: create app directory
+     file:
+     name: /app
+     state: directory
+   - name: Install dependencies
+     get_url:
+     url: https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip 
+     dest: /tmp/payment.zip 
+   - name: unzip dependencies
+     unarchive:
+     src: /tmp/payment.zip
+     dest: /app
+   - name: Install Pip dependencies
+     pip:
+      requirements: requirements.txt
+      executable: pip3.9
+     args:
+      chdir: /app
+   - name: copy payment service
+     template:
+      src: payment.service.j2
+      dest: /etc/systemd/system/payment.service
+   - name: payment service daemon_reload
+     systemd_service:
+      name: payment
+      daemon_reload: true
+   - name: restarted Payment services
+     service:
+      name: payment
+      state: restarted
+      enabled: yes
