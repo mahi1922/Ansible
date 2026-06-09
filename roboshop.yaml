@@ -1,5 +1,5 @@
 - name: roboshop All nodes
-  hosts: local
+  hosts: inventory.ini
   connection: local
   vars:
    instance: [ "Mongodb", "Redis", "MySql", "RabbitMQ", "Catalogue", "User", "Cart", "Shipping", "Payments", "UI" ]
@@ -44,7 +44,7 @@
       zone: "{{ domain_name }}"
       record: "{{ domain_name }}"
       type: A
-      ttl: 60
+      ttl: 1
       value: "{{ item.instances[0].public_ip_address }}"
       overwrite: true
      loop: "{{ ec2_output.results }}"
