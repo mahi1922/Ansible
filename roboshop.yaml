@@ -1,5 +1,5 @@
 - name: roboshop All nodes
-  hosts: inventory.ini
+  hosts: local
   connection: local
   vars:
    instance: [ "Mongodb", "Redis", "MySql", "RabbitMQ", "Catalogue", "User", "Cart", "Shipping", "Payments", "UI" ]
