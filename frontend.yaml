@@ -1,0 +1,6 @@
+- name: frontend service config
+  host: UI
+  become: yes
+  tasks:
+   - name: enable nodejs modules
+     command: dnf module enable nginx:1.24 -y
