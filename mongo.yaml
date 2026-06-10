@@ -17,7 +17,7 @@
       regexp: '127.0.0.1'
       replace: '0.0.0.0'
 
-   - name:
+   - name: Restart mongod service
       service: 
        name: mongod
        state: started
