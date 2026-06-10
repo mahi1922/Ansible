@@ -9,8 +9,8 @@
 
    - name: Install mongoDB server
      package: 
-      - name: mongodb-org
-        state: present
+      name: mongodb-org
+      state: present
    - name: allow remote connection
      replace:
       path:  /etc/mongod.conf
