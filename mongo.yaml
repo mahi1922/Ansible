@@ -18,9 +18,9 @@
       replace: '0.0.0.0'
 
    - name: Restart mongod service
-      service: 
+     service: 
        name: mongod
-       state: started
+       state: restarted
        enabled: yes
 
   
