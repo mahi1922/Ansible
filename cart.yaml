@@ -35,12 +35,14 @@
      template:
       src: cart.service.j2
       dest: /etc/systemd/system/cart.service
+
+   - name: unmask cart service
+     command: systemctl unmask cart
    - name: daemon reload
      systemd:
-      name: cart
       daemon_reload: true
-   - name: enable and restart cart
-     service:
-       name: cart
-       state: started
-       enabled: yes
+   - name: enable and start cart
+     systemd:
+      name: cart
+      state: started
+      enabled: yes
