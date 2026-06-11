@@ -12,23 +12,23 @@
       - python3-devel
    - name: Create roboshop user
      user:
-     name: roboshop
-     system: true
-     shell: /sbin/nologin
-     home: /app
-     comments: " roboshop system user "
+      name: roboshop
+      system: true
+      shell: /sbin/nologin
+      home: /app
+      comments: " roboshop system user "
    - name: create app directory
      file:
-     name: /app
-     state: directory
+      path: /app
+      state: directory
    - name: Install dependencies
      get_url:
-     url: https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip 
-     dest: /tmp/payment.zip 
+      url: https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip 
+      dest: /tmp/payment.zip 
    - name: unzip dependencies
      unarchive:
-     src: /tmp/payment.zip
-     dest: /app
+      src: /tmp/payment.zip
+      dest: /app
    - name: Install Pip dependencies
      pip:
       requirements: requirements.txt
