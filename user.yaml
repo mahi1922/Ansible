@@ -17,8 +17,8 @@
       comment: "Roboshop System user"
    - name: create /app directory
      file:
-      path: /app
-      state: directory
+       path: /app
+       state: directory
    - name: download user code
      get_url:
       url: https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip 
