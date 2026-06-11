@@ -4,7 +4,7 @@
   tasks:
     - name: Install mysql 
       package: 
-       name: mysql
+       name: mysql-server
        state: present
 
     - name: Start mysql
