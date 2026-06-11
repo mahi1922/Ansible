@@ -17,7 +17,7 @@
       comment: "Roboshop System user"
    - name: create /app folder
      file:
-      name: /app
+      path: /app
       state: present
    - name: download catalogue files
      get_url:
