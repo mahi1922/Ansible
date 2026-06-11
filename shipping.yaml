@@ -24,10 +24,12 @@
      get_url:
      url: https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip 
      dest: /tmp/shipping.zip
+
    - name: unzipping the dependencies
-     unarchive
-     src: /tmp/shipping.zip
-     dest: /app
+     unarchive:
+      src: /tmp/shipping.zip
+      dest: /app
+      remote_src: yes
    - name: install dependencies
      command: mvn clean package
      args:
