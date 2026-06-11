@@ -5,8 +5,9 @@
    - name: enable nodejs service
      command: dnf module enable nodejs:20 -y
    - name: install nodejs 20
-     package: nodejs
-     state: present
+     package: 
+      name: nodejs
+      state: present
    - name: create roboshop system user
      user: 
       name: roboshop
@@ -56,7 +57,7 @@
      shell: mongosh --host "{{ MONGODB_HOST }}" </app/db/master-data.js
      when: catalogue_output.stdout | int < 0
      tags:
-     - mongodb
+      - mongodb
    - name: deamon reload
      systemd_service:
       name: catalogue
