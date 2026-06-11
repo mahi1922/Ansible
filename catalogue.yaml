@@ -1,6 +1,6 @@
 - name: config catalogue service
   hosts: Catalogue
-  becone: yes
+  become: yes
   tasks:
    - name: enable nodejs service
      command: dnf module enable nodejs:20 -y
