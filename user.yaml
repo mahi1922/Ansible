@@ -21,8 +21,8 @@
       state: directory
    - name: download user code
      get_url:
-     url: https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip 
-     dest: /tmp/user.zip
+      url: https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip 
+      dest: /tmp/user.zip
    - name: unzip dependecy
      unarchive:
       src: /tmp/user.zip
@@ -30,11 +30,11 @@
       remote_src: yes
    - name: install dependencies
      community.general.npm:
-     path: /app
+      path: /app
    - name: copy user service
      template:
-     src: user.service.j2
-     dest: /etc/systemd/system/user.service
+      src: user.service.j2
+      dest: /etc/systemd/system/user.service
    - name: deamon reload
      systemd_service:
       name: user
