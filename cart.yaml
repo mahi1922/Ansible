@@ -35,7 +35,7 @@
      template:
       src: cart.service.j2
       dest: /etc/systemd/system/cart.service
-   - name: daemon_reload
+   - name: daemon reload
      systemd_service:
       name: cart
       daemon_reload: true
