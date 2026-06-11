@@ -1,5 +1,5 @@
 - name: frontend service config
-  host: UI
+  hosts: UI
   become: yes
   tasks:
    - name: enable nginx modules
