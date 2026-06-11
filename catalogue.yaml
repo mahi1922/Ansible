@@ -15,7 +15,7 @@
       shell: /sbin/nologin
       home: /app
       comment: "Roboshop System user"
-      
+
    - name: create /app folder
      file:
       path: /app
@@ -60,7 +60,7 @@
    - name: print catalogue_output
      debug:
       msg: "{{ catalogue_output }}"
-      tags:
+     tags:
        - mongodb
 
    - name: load products
