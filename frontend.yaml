@@ -12,9 +12,9 @@
 
    - name: remove html directory
      file:
-     path: /usr/share/nginx/html/
-     state: absent
-     
+      path: /usr/share/nginx/html/
+      state: absent
+
    - name: delete frontend.zip in tmp directory
      file:
      path: /tmp/frontend.zip
