@@ -5,7 +5,7 @@
    - name: enable nodejs
      command: dnf module enable nodejs:20 -y
    - name: Install NodeJS
-     pcakage:
+     package:
       name: nodejs
       state: present
    - name: Add user
@@ -17,7 +17,7 @@
       comment: "Roboshop System user"
    - name: create /app directory
      file:
-     name: /app
+     path: /app
      state: directory
    - name: download user code
      get_url:
