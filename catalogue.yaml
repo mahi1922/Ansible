@@ -1,5 +1,5 @@
 - name: config catalogue service
-  host: Catalogue
+  hosts: Catalogue
   becone: yes
   tasks:
    - name: enable nodejs service

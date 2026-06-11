@@ -1,5 +1,5 @@
 - name: config user service
-  host: User
+  hosts: User
   become: yes
   tasks:
    - name: enable nodejs

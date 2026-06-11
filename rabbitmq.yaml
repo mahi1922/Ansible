@@ -1,5 +1,5 @@
 - name: rabbitmq cinfig
-  host: RabbitMQ
+  hosts: RabbitMQ
   become: yes
   tasks:
     - name: copy rabbitmq repo

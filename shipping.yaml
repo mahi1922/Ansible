@@ -1,5 +1,5 @@
 - name: Congif Shipping service
-  host: Shipping
+  hosts: Shipping
   become: yes
   tasks:
    - name: Install maven and mysql

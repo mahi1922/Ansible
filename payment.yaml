@@ -1,5 +1,5 @@
 - name: Config Payments
-  host: Payment
+  hosts: Payment
   become: yes
   tasks:
    - name: Install packages
