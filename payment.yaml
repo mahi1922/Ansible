@@ -29,6 +29,7 @@
      unarchive:
       src: /tmp/payment.zip
       dest: /app
+      remote_src: yes
    - name: Install Pip dependencies
      pip:
       requirements: requirements.txt
