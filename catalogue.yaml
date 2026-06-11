@@ -40,7 +40,7 @@
       src: mongo.repo
       dest: /etc/yum.repos.d/mongo.repo
    - name: Install mongodb client
-     pcakage:
+     package:
       name: mongodb-mongosh
       state: present
    - name: check catalogue schema exist ot not
