@@ -3,7 +3,7 @@
   becone: yes
   tasks:
    - name: enable nodejs service
-     command: command: dnf module enable nodejs:20 -y
+     command: dnf module enable nodejs:20 -y
    - name: install nodejs 20
      package: nodejs
      state: present
