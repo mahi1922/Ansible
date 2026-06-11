@@ -8,4 +8,4 @@ CATALOGUE_HOST: catalogue.devopsaium.online
 USER_HOST: user.devopsaium.online
 CART_HOST: cart.devopsaium.online
 SHIPPING_HOST: shipping.devopsaium.online
-PAYMENT_HOST: payment.devopsaium.online
+PAYMENT_HOST: payments.devopsaium.online
