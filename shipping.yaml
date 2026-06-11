@@ -24,8 +24,8 @@
 
    - name: download dependencies
      get_url:
-     url: https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip 
-     dest: /tmp/shipping.zip
+      url: https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip 
+      dest: /tmp/shipping.zip
 
    - name: unzipping the dependencies
      unarchive:
@@ -69,7 +69,7 @@
      systemd_service:
       name: shipping
       daemon_reload: true
-      
+
    - name: service restarts
      service:
       name: shipping
