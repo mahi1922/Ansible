@@ -32,7 +32,7 @@
      community.general.npm:
       path: /app
    - name: copy cart service
-     file:
+     template:
       src: cart.service.j2
       dest: /etc/systemd/system/cart.service
    - name: daemon_reload
