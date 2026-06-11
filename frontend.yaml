@@ -4,7 +4,7 @@
   tasks:
    - name: enable nginx modules
      command: dnf module enable nginx:1.24 -y
-     
+
    - name: Install nginx
      package:
       name: nginx
@@ -14,6 +14,7 @@
      file:
      path: /usr/share/nginx/html/
      state: absent
+     
    - name: delete frontend.zip in tmp directory
      file:
      path: /tmp/frontend.zip
