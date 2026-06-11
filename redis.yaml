@@ -1,5 +1,5 @@
 - name: config redis server
-  host: Redis
+  hosts: Redis
   become: yes
   tasks:
    - name: enable redis 7
@@ -22,6 +22,6 @@
    - name: Start redis server
      service:
        name: redis
-       state: started
+       state: restarted
        enabled: yes
       
