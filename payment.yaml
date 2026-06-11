@@ -17,7 +17,7 @@
        shell: /sbin/nologin
        home: /app
        comments: " roboshop system user "
-   - name: create app directory
+   - name: create /app directory
      file:
       path: /app
       state: directory
