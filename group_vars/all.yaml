@@ -9,4 +9,4 @@ USER_HOST: user.devopsaium.online
 CART_HOST: cart.devopsaium.online
 SHIPPING_HOST: shipping.devopsaium.online
 PAYMENT_HOST: payments.devopsaium.online
-#UI_HOST: devopsaium.online
+UI_HOST: devopsaium.online
