@@ -12,11 +12,11 @@
       - python3-devel
    - name: Create roboshop user
      user:
-      name: roboshop
-      system: true
-      shell: /sbin/nologin
-      home: /app
-      comments: " roboshop system user "
+       name: roboshop
+       system: true
+       shell: /sbin/nologin
+       home: /app
+       comments: " roboshop system user "
    - name: create app directory
      file:
       path: /app
