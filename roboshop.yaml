@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 - name: install Roboshop instances
   hosts: local
   connection: local
@@ -23,3 +24,61 @@
         
       
     
+=======
+- name: roboshop All nodes
+  hosts: local
+  connection: local
+  vars:
+   instance: [ "Mongodb", "Redis", "MySql", "RabbitMQ", "Catalogue", "User", "Cart", "Shipping", "Payments", "UI" ]
+   image_id: ami-0220d79f3f480ecf5
+   domain_name: devopsaium.online
+   action: create
+  tasks:
+   - name: create ec2 node
+     amazon.aws.ec2_instance:
+      image_id: "{{ image_id }}"
+      instance_type: t3.micro
+      name: "Roboshop-{{ item }}"
+      security_groups:
+       - "Roboshop-UI"
+       - "Roboshop-{{ item }}"
+      wait: true
+     loop: "{{ instance }}"
+     register: ec2_output
+     
+   - name: print ec2_output
+     debug:
+      msg: "{{ ec2_output }}"
+    
+   - name: create 53 records for Db and app nodes
+     amazon.aws.route53:
+      state: present
+      zone: "{{ domain_name }}"
+      record: "{{ item.item }}.{{ domain_name }}"
+      type: A
+      ttl: 1
+      value: "{{ item.instances[0].private_ip_address}}"
+      overwrite: true
+     loop: "{{ ec2_output.results }}"
+     when:
+      - action == "create"
+  
+   - name: create 53 record for frontend
+     amazon.aws.route53:
+      state: present
+      zone: "{{ domain_name }}"
+      record: "{{ domain_name }}"
+      type: A
+      ttl: 1
+      value: "{{ item.instances[0].public_ip_address }}"
+      overwrite: true
+     loop: "{{ ec2_output.results }}"
+     when:
+      - item.item == "UI"
+      - action == "create"
+
+
+      
+
+ 
+>>>>>>> 390eea9da2707ae43fcd990749a384f2c2b35553
